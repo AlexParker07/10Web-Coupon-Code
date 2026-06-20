@@ -1,286 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10Web AI Website Progress Tracker</title>
-
-<style>
-:root{
---bg:#0f172a;
---card:#1e293b;
---border:#334155;
---text:#f8fafc;
---muted:#94a3b8;
---accent:#22c55e;
---yellow:#facc15;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-background:var(--bg);
-color:var(--text);
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
-}
-
-.wrapper{
-width:100%;
-max-width:460px;
-}
-
-.card{
-background:var(--card);
-padding:30px;
-border-radius:18px;
-border:1px solid var(--border);
-box-shadow:0 20px 45px rgba(0,0,0,.35);
-}
-
-h1{
-font-size:30px;
-text-align:center;
-margin-bottom:10px;
-}
-
-.subtitle{
-text-align:center;
-color:var(--muted);
-margin-bottom:30px;
-line-height:1.5;
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-bottom:25px;
-}
-
-.stat{
-background:#111c30;
-padding:18px;
-border-radius:12px;
-text-align:center;
-border:1px solid var(--border);
-}
-
-.stat h2{
-font-size:28px;
-margin-bottom:5px;
-}
-
-.stat p{
-font-size:13px;
-color:var(--muted);
-}
-
-button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-margin-bottom:12px;
-}
-
-#complete{
-background:var(--accent);
-color:#052e16;
-}
-
-#complete:hover{
-background:#16a34a;
-}
-
-#reset{
-background:#334155;
-color:white;
-}
-
-.cta{
-display:block;
-margin-top:20px;
-padding:16px;
-background:var(--yellow);
-text-align:center;
-text-decoration:none;
-font-weight:bold;
-border-radius:10px;
-color:#111827;
-}
-
-footer{
-margin-top:20px;
-font-size:12px;
-color:var(--muted);
-text-align:center;
-line-height:1.6;
-}
-
-.progress{
-margin:25px 0;
-height:10px;
-background:#0b1220;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress div{
-height:100%;
-background:var(--accent);
-width:0%;
-transition:.3s;
-}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10Web Website Launch Tracker</title>
+  <meta name="description" content="A free interactive 10Web website launch tracker for planning AI-built WordPress sites." />
+  <style>
+    :root{
+      --bg:#0f172a; --card:#1e293b; --line:#334155;
+      --text:#f1f5f9; --muted:#94a3b8; --accent:#22c55e; --accent-2:#16a34a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; font-family:Arial,Helvetica,sans-serif;
+      background:radial-gradient(1200px 600px at 50% -10%,#1b2740,transparent),var(--bg);
+      color:var(--text); display:flex; flex-direction:column; align-items:center; padding:24px;
+    }
+    h1{font-size:clamp(24px,5vw,38px); margin:32px 0 4px; text-align:center}
+    .sub{color:var(--muted); margin:0 0 28px; text-align:center; max-width:560px; line-height:1.5}
+    .card{
+      background:var(--card); border:1px solid var(--line); border-radius:16px;
+      padding:28px; width:100%; max-width:460px; text-align:center;
+      box-shadow:0 20px 40px rgba(0,0,0,.35);
+    }
+    .stats{display:flex; gap:12px; margin-bottom:22px}
+    .stat{flex:1; background:#0f1a2e; border:1px solid var(--line); border-radius:12px; padding:16px 10px}
+    .stat .label{font-size:13px; color:var(--muted); margin-bottom:6px}
+    .stat .value{font-size:30px; font-weight:700}
+    .checklist{text-align:left; display:grid; gap:10px; margin:18px 0 20px}
+    label{
+      display:flex; gap:10px; align-items:center; background:#0f1a2e;
+      border:1px solid var(--line); padding:12px; border-radius:10px; color:var(--text);
+    }
+    input{width:18px; height:18px; accent-color:var(--accent)}
+    button{
+      width:100%; padding:14px 20px; border:none; border-radius:10px; cursor:pointer;
+      font-size:16px; font-weight:700; color:#04210f; background:var(--accent-2);
+      transition:transform .05s ease, background .2s ease;
+    }
+    button:hover{background:#15803d}
+    button:active{transform:translateY(1px)}
+    .reset{margin-top:10px; background:transparent; color:var(--muted); font-weight:500; font-size:13px}
+    .reset:hover{background:transparent; color:var(--text)}
+    .cta{
+      display:block; margin:18px auto 0; max-width:460px; text-decoration:none;
+      background:var(--accent); color:#052e16; font-weight:700; text-align:center;
+      padding:14px 18px; border-radius:10px;
+    }
+    .cta:hover{filter:brightness(1.05)}
+    footer{color:var(--muted); font-size:12px; margin-top:28px; max-width:560px; text-align:center; line-height:1.5}
+  </style>
 </head>
 <body>
+  <h1>🚀 10Web Website Launch Tracker</h1>
+  <p class="sub">Plan your AI-built WordPress site, tick off each launch step, and save your progress locally in this browser.</p>
 
-<div class="wrapper">
+  <div class="card">
+    <div class="stats">
+      <div class="stat"><div class="label">✅ Completed</div><div class="value" id="done">0</div></div>
+      <div class="stat"><div class="label">⚡ Launch Score</div><div class="value" id="score">0%</div></div>
+    </div>
 
-<div class="card">
+    <div class="checklist" id="tasks">
+      <label><input type="checkbox" data-task="brief"> Write business brief for AI Builder</label>
+      <label><input type="checkbox" data-task="pages"> Pick core pages and sections</label>
+      <label><input type="checkbox" data-task="brand"> Choose fonts, colors, and brand style</label>
+      <label><input type="checkbox" data-task="domain"> Connect or register domain</label>
+      <label><input type="checkbox" data-task="mobile"> Review desktop and mobile versions</label>
+      <label><input type="checkbox" data-task="speed"> Run speed and SEO checks</label>
+    </div>
 
-<h1>🚀 10Web Progress Tracker</h1>
+    <button id="completeBtn">Mark Today as a Launch Day</button>
+    <button class="reset" id="resetBtn">Reset tracker</button>
+  </div>
 
-<p class="subtitle">
-Track your website-building progress and keep your daily AI website creation streak alive.
-</p>
+  <a class="cta" href="https://10web.sjv.io/c/205573/1979494/24269" target="_blank" rel="noopener sponsored">
+    🎁 Get 10Web: Up to 50% Annual Discount + 7-Day Trial →
+  </a>
 
-<div class="stats">
+  <footer>
+    Built for creators, businesses, and agencies planning sites with 10Web. This page contains an affiliate link — we may earn a commission at no extra cost to you. Not affiliated with or endorsed by 10Web.
+  </footer>
 
-<div class="stat">
-<h2 id="streak">0</h2>
-<p>🔥 Streak</p>
-</div>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const boxes = Array.from(document.querySelectorAll("input[type='checkbox']"));
+    const todayKey = "tenwebLaunchToday";
+    const saved = JSON.parse(localStorage.getItem("tenwebLaunchTasks") || "{}");
 
-<div class="stat">
-<h2 id="sites">0</h2>
-<p>🌐 Websites</p>
-</div>
+    boxes.forEach(box => {
+      box.checked = !!saved[box.dataset.task];
+      box.addEventListener("change", save);
+    });
 
-<div class="stat">
-<h2 id="xp">0</h2>
-<p>⭐ XP</p>
-</div>
+    function save(){
+      const data = {};
+      boxes.forEach(box => data[box.dataset.task] = box.checked);
+      localStorage.setItem("tenwebLaunchTasks", JSON.stringify(data));
+      render();
+    }
 
-</div>
+    function render(){
+      const completed = boxes.filter(box => box.checked).length;
+      const percent = Math.round((completed / boxes.length) * 100);
+      $("done").innerText = completed;
+      $("score").innerText = percent + "%";
+    }
 
-<div class="progress">
-<div id="bar"></div>
-</div>
+    function markLaunchDay(){
+      const today = new Date().toDateString();
+      localStorage.setItem(todayKey, today);
+      alert("Nice. Your 10Web launch momentum is saved for today.");
+    }
 
-<button id="complete">I Finished Today's Website Task</button>
+    function resetTracker(){
+      if (!confirm("Reset your 10Web launch checklist?")) return;
+      localStorage.removeItem("tenwebLaunchTasks");
+      localStorage.removeItem(todayKey);
+      boxes.forEach(box => box.checked = false);
+      render();
+    }
 
-<button id="reset">Reset Progress</button>
-
-<a class="cta"
-href="https://10web.sjv.io/c/205573/1979494/24269"
-target="_blank"
-rel="noopener sponsored">
-🎁 Get 10Web — Save Up To 50%
-</a>
-
-</div>
-
-<footer>
-
-This page contains an affiliate link. We may earn a commission at no extra cost to you.
-<br><br>
-This project is independent and is not affiliated with or endorsed by 10Web.
-
-</footer>
-
-</div>
-
-<script>
-
-const streak=document.getElementById("streak");
-const xp=document.getElementById("xp");
-const sites=document.getElementById("sites");
-const bar=document.getElementById("bar");
-
-let data=JSON.parse(localStorage.getItem("tenwebTracker")) || {
-streak:0,
-xp:0,
-sites:0,
-last:""
-};
-
-function render(){
-
-streak.innerText=data.streak;
-xp.innerText=data.xp;
-sites.innerText=data.sites;
-
-let percent=Math.min(data.xp,100);
-
-bar.style.width=percent+"%";
-
-}
-
-function today(){
-return new Date().toDateString();
-}
-
-document.getElementById("complete").onclick=function(){
-
-if(data.last===today()){
-alert("You've already completed today's task!");
-return;
-}
-
-const yesterday=new Date();
-yesterday.setDate(yesterday.getDate()-1);
-
-if(data.last===yesterday.toDateString())
-data.streak++;
-else
-data.streak=1;
-
-data.sites++;
-data.xp+=10;
-data.last=today();
-
-localStorage.setItem("tenwebTracker",JSON.stringify(data));
-
-render();
-
-};
-
-document.getElementById("reset").onclick=function(){
-
-if(confirm("Reset your progress?")){
-
-localStorage.removeItem("tenwebTracker");
-
-data={
-streak:0,
-xp:0,
-sites:0,
-last:""
-};
-
-render();
-
-}
-
-};
-
-render();
-
-</script>
-
+    $("completeBtn").addEventListener("click", markLaunchDay);
+    $("resetBtn").addEventListener("click", resetTracker);
+    render();
+  </script>
 </body>
 </html>
